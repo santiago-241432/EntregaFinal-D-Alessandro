@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
-const ItemCount = ({stock}) =>{
+const ItemCount = ({stock, onAdd}) =>{
 
     const [cantidad, setCantidad] = useState(1);
     const [itemStock, setItemStock] = useState(stock);
+    const [aggItem, setAggItem] = useState(false);
 
 
     const sumar = () => {
@@ -16,11 +18,12 @@ const ItemCount = ({stock}) =>{
         
     }
 
-    const onAdd = () => {
+    const addToCart = () => {
         if (itemStock => cantidad) {
             setItemStock(itemStock - cantidad);
             setCantidad(0);
-            console.log("AGREGASTE " + cantidad + " PRODUCTOS AL CARRITO");
+            setAggItem(true);
+            onAdd(cantidad);
             
         
         }
@@ -38,17 +41,18 @@ const ItemCount = ({stock}) =>{
         <div className="container">
             <div className="row my-1">
                 <div className="col">
-                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                        <button type="button" onClick={restar} class="btn btn-danger">-</button>
+                    <div className="btn-group" role="group" aria-label="Basic mixed styles example">
+                        <button type="button" onClick={restar} className="btn btn-danger">-</button>
                         <button type="button" >{cantidad}</button> 
-                        <button type="button" onClick={sumar} class="btn btn-success">+</button>
+                        <button type="button" onClick={sumar} className="btn btn-success">+</button>
                         
                     </div>
                 </div>
             </div>
             <div className="row my-1">
                 <div className="col">
-                    <button type="button" onClick={onAdd}>AGREGAR AL CARRITO</button> 
+                    {aggItem ? <Link to={"/cart"} type="button" className="btn btn-danger">TERMINAR MI COMPRA</Link> :
+                    <button type="button" onClick={addToCart}>AGREGAR AL CARRITO</button>}
                 </div>
             </div> 
         

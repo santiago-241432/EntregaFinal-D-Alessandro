@@ -1,15 +1,17 @@
+import { NavLink } from "react-router-dom";
+
 const Footer = () =>{
     return(
         <div>
             <ul className="nav justify-content-end bg-light">
                 <li className="nav-item ">
-                    <a className="nav-link text-dark" href={"/PoliticaDePrivacidad"}>POLITICA DE PRIVACIDAD</a>
+                    <NavLink className="nav-link text-dark" to={"/PoliticaDePrivacidad"}>POLITICA DE PRIVACIDAD</NavLink>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link text-dark" href={"/DefensaDelConsumidor"}>DEFENSA DEL CONSUMIDOR</a>
+                    <NavLink className="nav-link text-dark" to={"/DefensaDelConsumidor"}>DEFENSA DEL CONSUMIDOR</NavLink>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link text-dark" href={"/Contacto"}>CONTACTO</a>
+                    <NavLink className="nav-link text-dark" to={"/Contacto"}>CONTACTO</NavLink>
                 </li>
             </ul>
         </div>
